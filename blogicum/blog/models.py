@@ -92,12 +92,12 @@ class Comment(models.Model):
     )
     created_at = models.DateTimeField(
         'Добавлено',
-        auto_now_add=True,  # ВАЖНО: auto_now_add=True
-        db_index=True       # ВАЖНО: для сортировки
+        auto_now_add=True,  # auto_now_add=True
+        db_index=True       # для сортировки
     )
     
     class Meta:
-        ordering = ('created_at',)  # ВАЖНО: от старых к новым
+        ordering = ('created_at',)  # от старых к новым
         verbose_name = 'комментарий'
         verbose_name_plural = 'Комментарии'
     
