@@ -93,7 +93,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
-    template_name = 'blog/delete.html'
+    template_name = 'blog/create.html'
 
     def get_object(self, queryset=None):
         post_id = self.kwargs.get('post_id')
