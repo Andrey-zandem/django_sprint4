@@ -102,11 +102,16 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
 
-        # Если не автор - редирект на пост
+        # Проверка: автор ли пользователь
         if self.object.author != request.user:
             return redirect('blog:post_detail', post_id=self.object.id)
 
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = PostForm(instance=self.object)
+        return context
 
     def get_success_url(self):
         return reverse_lazy('blog:index')
