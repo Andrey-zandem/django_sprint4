@@ -117,7 +117,7 @@ class CommentPermissionMixin(LoginRequiredMixin, UserPassesTestMixin):
 
     def get_object(self, queryset=None):
         post_id = self.kwargs.get('post_id')
-        pk = self.kwargs.get('pk')
+        pk = self.kwargs.get('comment_id')
         return get_object_or_404(Comment, pk=pk, post_id=post_id)
 
     def dispatch(self, request, *args, **kwargs):
